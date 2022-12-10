@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'Administracion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# cambiar las variables para la conexión con la base de datos si es necesario!
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
