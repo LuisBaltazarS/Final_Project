@@ -26,26 +26,26 @@ class Usuarios extends React.Component {
       render() {
         return (
           <div>
-            <table border="1">
+            <table className="table">
             <thead>
               <tr>
-                <th>Código Usuario</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>        
-                <th>Fecha de Nacimiento</th> 
-                <th>DNI</th>
-                <th>Correo</th>
-                <th>Contraseña</th>
-                <th>Teléfono</th>
-                <th>Tipo de Usuario</th>
-                <th>Institución</th>
-                <th>Tutor</th>            
+                <th scope="col">Código Usuario</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>        
+                <th scope="col">Fecha de Nacimiento</th> 
+                <th scope="col">DNI</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Tipo de Usuario</th>
+                <th scope="col">Institución</th>
+                <th scope="col">Tutor</th>            
               </tr>
             </thead>
             <tbody>  
               {this.state.usuarios.map(usuario => {
                 return (
-                  <tr key={usuario.id}>
+                  <tr scope="row" key={usuario.id}>
                     <td>{usuario.nombres}</td>
                     <td>{usuario.apellidos}</td>
                     <td>{usuario.fecha_nac}</td>
