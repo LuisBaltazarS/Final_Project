@@ -13,6 +13,13 @@ public class LoginController {
 		
 	}
 	
+	@GetMapping("/")
+	public String PaginaInicio() {
+		
+		return "index";
+		
+	}
+	
 	
 
 }

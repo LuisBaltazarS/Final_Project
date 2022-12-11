@@ -1,9 +1,13 @@
 package com.tecsup.user.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	public Usuario save(UserRegisterDTO registroDTO) {
 
 		Usuario usuario = new Usuario(registroDTO.getNombres(), registroDTO.getApellidos(),
-				registroDTO.getDni(), registroDTO.getCorreo(), registroDTO.getPassword());
+				registroDTO.getDni(), registroDTO.getCorreo(), passwordEncoder.encode(registroDTO.getPassword()));
 
 		
 		
@@ -70,7 +74,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
+		
 		Usuario usuario = usuarioRepositorio.findByCorreo(username);
 
 		if (usuario == null) {
@@ -79,8 +83,14 @@ public class UserServiceImpl implements UserService {
 
 		}
 
-		return new User(usuario.getCorreo(), usuario.getPassword(), null);
+		return new User(usuario.getCorreo(), usuario.getPassword(), mapearRoles(getAllUser()));
 
+	}
+	
+	private Collection<? extends GrantedAuthority> mapearRoles(Collection<Usuario> usuario) {
+		
+		return usuario.stream().map(user -> new SimpleGrantedAuthority(user.getNombres())).collect(Collectors.toList());
+		
 	}
 
 	@Override

@@ -49,7 +49,7 @@ class AdminSerializer(serializers.Serializer):
         """
         Create and return a new `Serie` instance, given the validated data.
         """
-        return Usuario.objects.create(**validated_data)
+        return Admin.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
 
@@ -65,5 +65,5 @@ class AdminSerializer(serializers.Serializer):
         return instance
 
     class Meta:
-        model = Usuario
+        model = Admin
         fields = ('nombres', 'apellidos', 'dni', 'correo', 'password')
