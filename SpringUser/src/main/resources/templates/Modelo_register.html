@@ -40,26 +40,28 @@
 					<div style="background-color: rgba(0, 0, 0, 0);">
 						<div class="card-body">
 							<h3 class="card-title py-3">Fomulario de Registro</h3>
-							<form th:action="@{/registro}" method="post" th:object="${usuario}">
+							<form th:action="@{/registro}" method="post"
+								th:object="${usuario}">
 								<div class="row py-4">
 
 									<div class="col-sm-1"></div>
 
 									<div class="col-sm-4">
 
-										<label for="">Nombres: </label><br> <input type="text"
-											class="form-control" id="design_input" th:field="*{nombres}"
-											aria-describedby="basic-addon1" required
-											autofocus="autofocus">
+										<label for="nombres">Nombres: </label><br> <input
+											type="text" class="form-control" id="design_input"
+											th:field="*{nombres}" aria-describedby="basic-addon1"
+											required autofocus="autofocus" name="nombres">
 
 									</div>
 
 									<div class="col-sm-4">
 
-										<label for="">Apellidos: </label><br> <input type="text"
-											class="form-control" id="design_input"
-											th:field="*{apellidos}" aria-describedby="basic-addon1"
-											required autofocus="autofocus">
+										<label for="apellidos">Apellidos: </label><br> <input
+											type="text" class="form-control" id="design_input"
+											name="apellidos" th:field="*{apellidos}"
+											aria-describedby="basic-addon1" required
+											autofocus="autofocus">
 
 									</div>
 
@@ -69,18 +71,18 @@
 
 									<div class="col-sm-4">
 
-										<label for="">Fecha de Nacimiento: </label><br> <input
-											type="date" class="form-control" id="design_input"
+										<label for="nacimiento">Fecha de Nacimiento: </label><br>
+										<input type="date" class="form-control" id="design_input"
 											th:field="*{nacimiento}" aria-describedby="basic-addon1"
-											required autofocus="autofocus">
+											required autofocus="autofocus" name="nacimiento">
 
 									</div>
 
 									<div class="col-sm-4">
 
-										<label for="">DNI: </label><br> <input type="text"
+										<label for="dni">DNI: </label><br> <input type="text"
 											class="form-control" id="design_input" th:field="*{dni}"
-											aria-describedby="basic-addon1" required
+											aria-describedby="basic-addon1" required name="dni"
 											autofocus="autofocus" maxlength="8">
 
 									</div>
@@ -91,19 +93,20 @@
 
 									<div class="col-sm-4">
 
-										<label for="">Correo: </label><br> <input type="email"
-											class="form-control" id="design_input" th:field="*{correo}"
-											aria-describedby="basic-addon1" required
-											autofocus="autofocus">
+										<label for="correo">Correo: </label><br> <input
+											type="email" class="form-control" id="design_input"
+											th:field="*{correo}" aria-describedby="basic-addon1" required
+											autofocus="autofocus" name="correo">
 
 									</div>
 
 									<div class="col-sm-4">
 
-										<label for="">Teléfono: </label><br> <input type="text"
-											class="form-control" id="design_input" th:field="*{telefono}"
-											aria-describedby="basic-addon1" required
-											autofocus="autofocus" maxlength="9" min="9">
+										<label for="telefono">Teléfono: </label><br> <input
+											type="text" class="form-control" id="design_input"
+											th:field="*{telefono}" aria-describedby="basic-addon1"
+											required name="telefono" autofocus="autofocus" maxlength="9"
+											min="9">
 
 									</div>
 
@@ -113,19 +116,19 @@
 
 									<div class="col-sm-4">
 
-										<label for="">Centro de Estudios: </label><br> <input
-											type="text" class="form-control" id="design_input"
+										<label for="institucionId">Centro de Estudios: </label><br>
+										<input type="text" class="form-control" id="design_input"
 											th:field="*{institucionId}" aria-describedby="basic-addon1"
-											required autofocus="autofocus">
+											required autofocus="autofocus" name="institucionId">
 
 									</div>
 
 									<div class="col-sm-4">
 
-										<label for="">Tutor: </label><br> <input type="text"
-											class="form-control" id="design_input" th:field="*{tutorId}"
-											aria-describedby="basic-addon1" required
-											autofocus="autofocus">
+										<label for="tutorId">Tutor: </label><br> <input
+											type="text" class="form-control" id="design_input"
+											th:field="*{tutorId}" aria-describedby="basic-addon1"
+											required autofocus="autofocus" name="tutorId">
 
 									</div>
 
@@ -135,19 +138,19 @@
 
 									<div class="col-sm-4">
 
-										<label for="">Tipo: </label><br> <input
-											type="text" class="form-control" id="design_input"
-											th:field="*{tipoId}" aria-describedby="basic-addon1"
-											required autofocus="autofocus">
+										<label for="tipoId">Tipo: </label><br> <input type="text"
+											class="form-control" id="design_input" th:field="*{tipoId}"
+											aria-describedby="basic-addon1" required
+											autofocus="autofocus" name="tipoId">
 
 									</div>
-									
+
 									<div class="col-sm-4">
 
-										<label for="">Contraseña: </label><br> <input
+										<label for="passoword">Contraseña: </label><br> <input
 											type="password" class="form-control" id="design_input"
 											th:field="*{password}" aria-describedby="basic-addon1"
-											required autofocus="autofocus">
+											required autofocus="autofocus" name="passoword">
 
 									</div>
 
@@ -155,7 +158,16 @@
 
 									<div class="col-sm-4"></div>
 									<div class="col-sm-4">
-										<button type="submit" class="btn btn-secondary" id="design_btn">Registrar</button>
+										<button type="submit" class="btn btn-secondary"
+											id="design_btn">Registrar</button>
+									</div>
+									<div class="col-sm-4"></div>
+
+									<div class="col-sm-4"></div>
+									<div class="col-sm-4">
+										<span id="design_btn"><a th:href="@{/login}"
+											style="color: black; 	text-decoration: none;">¿Ya tienes
+												cuenta? Inicia sesión</a></span>
 									</div>
 									<div class="col-sm-4"></div>
 
