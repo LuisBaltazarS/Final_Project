@@ -10,7 +10,6 @@ class Admin(models.Model):
     dni = models.CharField('DNI', max_length=8, unique=True, blank=False, null=False)
     correo = models.EmailField('Correo electronico', max_length=200, unique=True ,blank=False, null=False)
     password = models.CharField('Contraseña', max_length=200, blank=False, null=False)
-    telefono = models.CharField('Telefono', max_length=9, unique=True, blank=False, null=False)
 
     class Meta:
 
@@ -25,11 +24,9 @@ class Usuario(models.Model):
     id = models.AutoField(primary_key=True)
     nombres = models.CharField('Nombres', max_length=200, blank=False, null=False)
     apellidos = models.CharField('Apellidos', max_length=200, blank=False, null=False)
-    fecha_nac = models.DateField('Fecha de nacimiento', blank=False, null=False)
     dni = models.CharField('DNI', max_length=8, unique=True, blank=False, null=False)
     correo = models.EmailField('Correo electronico', max_length=200, unique=True ,blank=False, null=False)
     password = models.CharField('Contraseña', max_length=200, blank=False, null=False)
-    telefono = models.CharField('Telefono', max_length=9, unique=True, blank=False, null=False)
 
     class Meta: 
 

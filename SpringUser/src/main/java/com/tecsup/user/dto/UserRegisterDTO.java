@@ -41,12 +41,11 @@ public class UserRegisterDTO {
 	}
 
 	public LocalDate getNacimiento() {
-
+		System.out.println(nacimiento);
 		return nacimiento;
 	}
 
 	public void setNacimiento(LocalDate nacimiento) {
-		
 		this.nacimiento = nacimiento;
 	}
 
@@ -83,6 +82,7 @@ public class UserRegisterDTO {
 	}
 
 	public int getInstitucionId() {
+		
 		return institucionId;
 	}
 
@@ -140,6 +140,7 @@ public class UserRegisterDTO {
 	public UserRegisterDTO() {
 		super();
 	}
+	
 	
 }
 
