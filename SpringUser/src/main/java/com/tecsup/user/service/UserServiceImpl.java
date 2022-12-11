@@ -29,12 +29,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Usuario save(UserRegisterDTO registroDTO) {
-		
-		System.out.println(registroDTO.getNacimiento());
 
-		Usuario usuario = new Usuario(registroDTO.getNombres(), registroDTO.getApellidos(), registroDTO.getNacimiento(),
-				registroDTO.getDni(), registroDTO.getCorreo(), registroDTO.getPassword(), registroDTO.getTelefono(),
-				registroDTO.getInstitucionId(), registroDTO.getTipoId(), registroDTO.getTutorId());
+		Usuario usuario = new Usuario(registroDTO.getNombres(), registroDTO.getApellidos(),
+				registroDTO.getDni(), registroDTO.getCorreo(), registroDTO.getPassword());
 
 		
 		
@@ -90,9 +87,8 @@ public class UserServiceImpl implements UserService {
 	public Usuario actualizarUser(UserRegisterDTO registroDTO, long id) {
 
 		Usuario usuario = new Usuario(id, registroDTO.getNombres(), registroDTO.getApellidos(),
-				registroDTO.getNacimiento(), registroDTO.getDni(), registroDTO.getCorreo(),
-				passwordEncoder.encode(registroDTO.getPassword()), registroDTO.getTelefono(),
-				registroDTO.getInstitucionId(), registroDTO.getTipoId(), registroDTO.getTutorId());
+				registroDTO.getDni(), registroDTO.getCorreo(),
+				passwordEncoder.encode(registroDTO.getPassword()));
 
 		return usuarioRepositorio.save(usuario);
 

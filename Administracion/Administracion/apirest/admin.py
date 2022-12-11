@@ -4,13 +4,13 @@ from .models import Usuario, Admin
 
 class Lista_admin(admin.ModelAdmin):
 
-    list_display = ("id", "nombres", "apellidos", "tipo", "dni", "correo", "telefono")
-    search_fields = ("nombres", "apellidos", "tipo__tipo", "dni")
+    list_display = ("id", "nombres", "apellidos", "dni", "correo")
+    search_fields = ("nombres", "apellidos", "dni")
 
 class Lista_users(admin.ModelAdmin):
 
-    list_display = ("id", "nombres", "apellidos", "tipo", "dni", "correo", "telefono", "fecha_nac")
-    search_fields = ("nombres", "apellidos", "tipo__tipo", "dni")
+    list_display = ("id", "nombres", "apellidos", "dni", "correo")
+    search_fields = ("nombres", "apellidos", "dni")
 
 # Register your models here.
 

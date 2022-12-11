@@ -7,14 +7,9 @@ public class UserRegisterDTO {
 	private Long id;
 	private String nombres;
 	private String apellidos;
-	private LocalDate nacimiento;
 	private String dni;
 	private String correo;
 	private String password;
-	private String telefono;
-	private int institucionId;
-	private int tipoId;
-	private int tutorId;
 
 	public Long getId() {
 		return id;
@@ -38,15 +33,6 @@ public class UserRegisterDTO {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
-	}
-
-	public LocalDate getNacimiento() {
-		System.out.println(nacimiento);
-		return nacimiento;
-	}
-
-	public void setNacimiento(LocalDate nacimiento) {
-		this.nacimiento = nacimiento;
 	}
 
 	public String getDni() {
@@ -73,68 +59,26 @@ public class UserRegisterDTO {
 		this.password = password;
 	}
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public int getInstitucionId() {
-		
-		return institucionId;
-	}
-
-	public void setInstitucionId(int institucionId) {
-		this.institucionId = institucionId;
-	}
-
-	public int getTipoId() {
-		return tipoId;
-	}
-
-	public void setTipoId(int tipoId) {
-		this.tipoId = tipoId;
-	}
-
-	public int getTutorId() {
-		return tutorId;
-	}
-
-	public void setTutorId(int tutorId) {
-		this.tutorId = tutorId;
-	}
-
-	public UserRegisterDTO(Long id, String nombres, String apellidos, LocalDate nacimiento, String dni, String correo,
-			String password, String telefono, int institucionId, int tipoId, int tutorId) {
+	public UserRegisterDTO(Long id, String nombres, String apellidos, String dni, String correo,
+			String password) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.nacimiento = nacimiento;
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
-		this.telefono = telefono;
-		this.institucionId = institucionId;
-		this.tipoId = tipoId;
-		this.tutorId = tutorId;
 	}
 
-	public UserRegisterDTO(String nombres, String apellidos, LocalDate nacimiento, String dni, String correo,
-			String password, String telefono, int institucionId, int tipoId, int tutorId) {
+	public UserRegisterDTO(String nombres, String apellidos, String dni, String correo,
+			String password) {
 		super();
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.nacimiento = nacimiento;
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
-		this.telefono = telefono;
-		this.institucionId = institucionId;
-		this.tipoId = tipoId;
-		this.tutorId = tutorId;
+
 	}
 
 	public UserRegisterDTO() {
