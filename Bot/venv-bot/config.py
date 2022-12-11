@@ -8,3 +8,21 @@ pregunta3 = "Ahora podemos pasar a los profesores ¿Son ellos buenos contigo? Si
 pregunta4 = "¿Qué hay del resto del personal de tu institución? por ejemplo los directores, personal de seguridad o limpieza ¿cómo te sientes con ellos?"
 pregunta5 = "¿Cómo te sientes contigo mismo/a?"
 pregunta6 = "Comentarios adicionales"
+
+# database configurations
+from configparser import ConfigParser
+
+def config(archivo='database.ini', seccion='postgresql'):
+    parser=ConfigParser()
+    parser.read(archivo)
+
+    db = {}
+    if parser.has_section(seccion):
+        params=parser.items(seccion)
+        for param in params:
+            db[param[0]] = param[1]
+            print(db)
+    else:
+        raise Exception('Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
+
+    return db

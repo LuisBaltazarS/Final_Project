@@ -6,10 +6,12 @@ plugins {
 
 group = 'com.tecsup'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
 	mavenCentral()
+	gradlePluginPortal()
 }
 
 dependencies {
