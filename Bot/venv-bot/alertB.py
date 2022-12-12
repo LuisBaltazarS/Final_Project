@@ -55,10 +55,12 @@ def act_pregunta1(message):
             bot.register_next_step_handler(msg, act_pregunta1)
         else:
             # agregar nombre de usuario al diccionario
-            nombres = datos[0]
-            apellidos = datos[1]
-            correo = datos[2]
+            idEstudiante = datos[0]
+            nombres = datos[1]
+            apellidos = datos[2]
+            correo = datos[3]
 
+            respuestas['idEstudiante'] = idEstudiante
             respuestas['nombres'] = nombres
             respuestas['apellidos'] = apellidos
             respuestas['correo'] = correo
@@ -133,10 +135,11 @@ def act_final(message):
     bot.send_message(message.chat.id, "Listo! Hemos acabado. Muchas gracias por tu tiempo 🌸 registraré y enviaré tus respuestas al tutor de tu institución, si lo ve conveniente se estará contactando contigo pronto.")
 
     # data
+    idEstudiante = respuestas['idEstudiante']
     estudiante = (str(respuestas['nombres'])).replace(' ','')
     now = datetime.datetime.now()
     time = (str(now.strftime('%m%d%Y%H%M%S')))
-    filename = estudiante + "_" + time
+    filename = estudiante + "_" + time + '.csv'
 
     # imprime en consola las respuestas obtenidos como diccionario
     print("Diccionario: \n\n",respuestas,"\n")
@@ -149,7 +152,9 @@ def act_final(message):
     path = Path(dirname+'/outputreports/'+estudiante+'/')
     path.mkdir(parents=True, exist_ok=True)
 
-    df.to_csv(dirname+'/outputreports/'+estudiante+'/'+filename+'.csv', index=False, sep=',', encoding='utf-8')
+    df.to_csv(dirname+'/outputreports/'+estudiante+'/'+filename, index=False, sep=',', encoding='utf-8')
+
+    insert_report(filename, now, 'En atención', idEstudiante)
 
     respuestas.clear()
 

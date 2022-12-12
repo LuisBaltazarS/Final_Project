@@ -12,7 +12,7 @@ def auth_estudiante(dni):
 
         cur = conexion.cursor()
 
-        query = 'SELECT nombres, apellidos, correo FROM apirest_usuario WHERE dni::integer = '
+        query = 'SELECT id, nombres, apellidos, correo FROM apirest_usuario WHERE dni::integer = '
 
         cur.execute(query + str(dni))
         res = cur.fetchone()
@@ -32,3 +32,27 @@ def auth_estudiante(dni):
             print('Conexion finalizada')
     
     return res
+
+def insert_report(fileName, fecha_emitido, estado, id_usuario_id):
+    conexion = None
+    try:
+        params = config(archivo='database.ini', seccion='postgresql')
+        print(params)
+
+        print('Conectando a la base de datos PostgreSQL...\n')
+        conexion = psycopg2.connect(**params)
+
+        cur = conexion.cursor()
+
+        query = 'INSERT INTO apirest_reporte (filename, fecha_emitido, estado, id_usuario_id) values(%s, %s, %s);'
+        data = (fileName, fecha_emitido, estado, id_usuario_id)
+
+        cur.execute(query, data)
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conexion is not None:
+            conexion.close()
+            print('Conexion finalizada')
