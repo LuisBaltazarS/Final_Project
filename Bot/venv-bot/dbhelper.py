@@ -49,8 +49,6 @@ def insert_report(fileName, fecha_emitido, estado, id_usuario_id):
         query = 'INSERT INTO apirest_reporte (filename, fecha_emitido, estado, id_usuario_id) values(%s, %s, %s, %s);'
         data = (fileName, fecha_emitido, estado, id_usuario_id)
 
-        print(data)
-
         cur.execute(query, data)
 
         cur.close()

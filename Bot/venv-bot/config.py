@@ -21,8 +21,12 @@ def config(archivo='database.ini', seccion='postgresql'):
         params=parser.items(seccion)
         for param in params:
             db[param[0]] = param[1]
-            print(db)
     else:
         raise Exception('Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
 
     return db
+
+# botemail
+
+bot_email = 'botalertb@gmail.com'
+bot_password = 'kqhfmkejbqojlilr'

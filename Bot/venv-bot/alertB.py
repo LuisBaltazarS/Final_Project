@@ -6,13 +6,13 @@ from telebot.types import ReplyKeyboardMarkup
 from telebot.types import ForceReply
 # Utils
 import os
-import errno
 from pathlib import Path
 from datetime import datetime, timezone
-import pytz
 import pandas as pd
 from dbhelper import *
-from report_to_PDF import rep_to_pdf
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from smtplib import SMTP
 
 # Instanciando bot
 bot = telebot.TeleBot(ALERTB_TOKEN)
@@ -142,6 +142,7 @@ def act_final(message):
     now_bot = dt.strftime('%y-%m-%d %H:%M:%S.%f%z')
     time = (str(dt.strftime('%m%d%Y%H%M%S')))
     filename = estudiante + "_" + time + '.csv'
+    correo = respuestas['correo']
 
     # imprime en consola las respuestas obtenidos como diccionario
     print("Diccionario: \n\n",respuestas,"\n")
@@ -154,9 +155,30 @@ def act_final(message):
     path = Path(dirname+'/outputreports/'+estudiante+'/')
     path.mkdir(parents=True, exist_ok=True)
 
+    save_routh=dirname+'/outputreports/'+estudiante+'/'+filename
+
     df.to_csv(dirname+'/outputreports/'+estudiante+'/'+filename, index=False, sep=',', encoding='utf-8')
 
+    # inserta el csv a la base de datos
     insert_report(filename, now_bot , 'En atención', idEstudiante)
+
+    # envía el csv al usuario por correo
+    mensaje = MIMEMultipart("plain")
+    mensaje["From"]=bot_email
+    mensaje["To"]=correo
+    mensaje["Subject"]="Constancia de las respuestas"
+
+    adjunto = MIMEBase("text", "csv")
+    adjunto.set_payload(open(save_routh, "rb").read())
+    adjunto.add_header("content-Disposition", 'attachment; filename="{}"'.format(filename))
+
+    mensaje.attach(adjunto)
+
+    smtp = SMTP("smtp.live.com")
+    smtp.starttls()
+    smtp.login(bot_email, bot_password)
+    smtp.sendmail(bot_email, correo, mensaje.as_string())
+    smtp.quit()
 
     respuestas.clear()
 
