@@ -49,7 +49,7 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Optional<Usuario> UserfindById(@PathVariable("id") Long id) {
+	public Optional<Usuario> UserfindByCorreo(@PathVariable("id") Long id) {
 		
 		return userService.getUserById(id);
 		

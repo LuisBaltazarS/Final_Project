@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+@font-face {
+
+    font-family: 'Geomanist Regular';
+    src: url('../fonts/geomanist-regular-webfont.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+
+}
+
