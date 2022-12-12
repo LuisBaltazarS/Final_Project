@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useState } from "react";
+import logo from './logo.svg';
+import './App.css';
+import { Login } from "../src/components/login";
+import { Register } from "../src/components/register";
 
-class App extends React.Component {
+function App() {
+  const [currentForm, setCurrentForm] = useState('login');
 
-  render() {
-
-    return (
-
-      <div className="container">
-
-        <h1>Home</h1>
-
-      </div>
-
-    )
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
   }
+
+  return (
+    <div className="App">
+      {
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+      }
+    </div>
+  );
 }
 
 export default App;
