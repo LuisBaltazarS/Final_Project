@@ -21,18 +21,22 @@
 <body>
 
 	<div class="position-relative"
-		style="background-image: url('img/mountains.jpg');" id="Image_register">
+		style="background-image: url('img/mountains.jpg');"
+		id="Image_register">
 
-		<header class="p-3"
-			style="background-color: rgba(0, 0, 0, 0);">
+		<header class="p-3" style="background-color: rgba(0, 0, 0, 0);">
 			<div class="container">
 				<div
 					class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
 					<ul
 						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-						<li><a th:href="@{/}"  class="nav-link px-2 text-secondary">Inicio</a></li>
-						<li><a th:href="@{/perfil} + ${#request.userPrincipal.principal.username}"  class="nav-link px-2 text-secondary">Perfil</a></li>
+						<li><a th:href="@{/}" class="nav-link px-2 text-secondary">Inicio</a></li>
+						<li><a
+							th:href="@{/perfil} + ${#request.userPrincipal.principal.username}"
+							class="nav-link px-2 text-secondary">Perfil</a></li>
+						<li><a th:href="@{/}"
+							class="nav-link px-2 text-secondary">Lista de Usuarios</a></li>
 					</ul>
 
 					<div class="text-end">
@@ -48,16 +52,16 @@
 		</header>
 
 		<div class="px-4 py-5 my-5 text-center">
-			<img class="d-block mx-auto mb-4"
-				src="img/bochi.jpeg" alt="" width="120"
-				height="120" style="border-radius: 100%;">
+			<img class="d-block mx-auto mb-4" src="img/bochi.jpeg" alt=""
+				width="120" height="120" style="border-radius: 100%;">
 			<h1 class="display-5 fw-bold">Alert - B</h1>
 			<div class="col-lg-6 mx-auto">
-				<p class="lead mb-4">Un bot creado principalmente para la detección de bullying en 
-				cualquier persona, con el cual este bot te realizara una encuesta para poder 
-				verificar tu situación. Para poder hacer uso del bot porfavor verifica si existe una especio
-				de circulo que aparece en la parte inferior derecha y presione para que lo redireccione al 
-				bot.</p>
+				<p class="lead mb-4">Un bot creado principalmente para la
+					detección de bullying en cualquier persona, con el cual este bot te
+					realizara una encuesta para poder verificar tu situación. Para
+					poder hacer uso del bot porfavor verifica si existe una especio de
+					circulo que aparece en la parte inferior derecha y presione para
+					que lo redireccione al bot.</p>
 			</div>
 		</div>
 

@@ -26,6 +26,7 @@ class Usuario(models.Model):
     apellidos = models.CharField('Apellidos', max_length=200, blank=False, null=False)
     dni = models.CharField('DNI', max_length=8, unique=True, blank=False, null=False)
     correo = models.EmailField('Correo electronico', max_length=200, unique=True ,blank=False, null=False)
+    user_role = models.CharField('Role', max_length=200, blank=False, null=False)
     password = models.CharField('Contraseña', max_length=200, blank=False, null=False)
 
     class Meta: 

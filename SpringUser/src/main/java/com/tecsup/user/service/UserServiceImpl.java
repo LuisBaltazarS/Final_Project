@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	public Usuario save(UserRegisterDTO registroDTO) {
 
 		Usuario usuario = new Usuario(registroDTO.getNombres(), registroDTO.getApellidos(),
-				registroDTO.getDni(), registroDTO.getCorreo(), passwordEncoder.encode(registroDTO.getPassword()));
+				registroDTO.getDni(), registroDTO.getCorreo(), passwordEncoder.encode(registroDTO.getPassword()), "USER");
 
 		
 		
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
 
 		Usuario usuario = new Usuario(id, registroDTO.getNombres(), registroDTO.getApellidos(),
 				registroDTO.getDni(), registroDTO.getCorreo(),
-				passwordEncoder.encode(registroDTO.getPassword()));
+				passwordEncoder.encode(registroDTO.getPassword()), registroDTO.getRole());
 
 		return usuarioRepositorio.save(usuario);
 

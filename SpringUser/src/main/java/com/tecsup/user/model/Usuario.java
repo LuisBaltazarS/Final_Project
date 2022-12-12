@@ -1,16 +1,11 @@
 package com.tecsup.user.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name = "apirest_usuario")
@@ -28,7 +23,16 @@ public class Usuario {
 	
 	private String correo;
 	private String password;
+	private String user_role;
 	
+	public String getRole() {
+		return user_role;
+	}
+
+	public void setRole(String user_role) {
+		this.user_role = user_role;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -82,23 +86,25 @@ public class Usuario {
 	}
 
 	public Usuario(Long id, String nombres, String apellidos, String dni, String correo,
-			String password) {
+			String password, String user_role) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
+		this.user_role = user_role;
 
 	}
 
-	public Usuario(String nombres, String apellidos, String dni, String correo, String password) {
+	public Usuario(String nombres, String apellidos, String dni, String correo, String password, String user_role) {
 		super();
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
+		this.user_role = user_role;
 	}
 
 	

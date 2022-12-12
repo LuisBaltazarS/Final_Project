@@ -1,7 +1,5 @@
 package com.tecsup.user.dto;
 
-import java.time.LocalDate;
-
 public class UserRegisterDTO {
 
 	private Long id;
@@ -10,6 +8,15 @@ public class UserRegisterDTO {
 	private String dni;
 	private String correo;
 	private String password;
+	private String user_role;
+
+	public String getRole() {
+		return user_role;
+	}
+
+	public void setRole(String user_role) {
+		this.user_role = user_role;
+	}
 
 	public Long getId() {
 		return id;
@@ -60,7 +67,7 @@ public class UserRegisterDTO {
 	}
 
 	public UserRegisterDTO(Long id, String nombres, String apellidos, String dni, String correo,
-			String password) {
+			String password, String user_role) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
@@ -68,16 +75,18 @@ public class UserRegisterDTO {
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
+		this.user_role = user_role;
 	}
 
 	public UserRegisterDTO(String nombres, String apellidos, String dni, String correo,
-			String password) {
+			String password, String user_role) {
 		super();
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.dni = dni;
 		this.correo = correo;
 		this.password = password;
+		this.user_role = user_role;
 
 	}
 
