@@ -1,5 +1,5 @@
 # Token del bot de telegram
-ALERTB_TOKEN = "5667543370:AAED847-MaCcr21sK_2N5xybgnbVxy-CO_4"
+ALERTB_TOKEN = "5667543370:AAFvp5pm6M3jVU8yUNenYN6NpI7eG-E8CcA"
 
 # preguntas
 pregunta1 = "¿Cómo te has sentido últimamente en tu institución educativa?"
