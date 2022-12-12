@@ -8,7 +8,8 @@ from telebot.types import ForceReply
 import os
 import errno
 from pathlib import Path
-import datetime
+from datetime import datetime, timezone
+import pytz
 import pandas as pd
 from dbhelper import *
 from report_to_PDF import rep_to_pdf
@@ -137,8 +138,9 @@ def act_final(message):
     # data
     idEstudiante = respuestas['idEstudiante']
     estudiante = (str(respuestas['nombres'])).replace(' ','')
-    now = datetime.datetime.now()
-    time = (str(now.strftime('%m%d%Y%H%M%S')))
+    dt = datetime.now(timezone.utc)
+    now_bot = dt.strftime('%y-%m-%d %H:%M:%S.%f%z')
+    time = (str(dt.strftime('%m%d%Y%H%M%S')))
     filename = estudiante + "_" + time + '.csv'
 
     # imprime en consola las respuestas obtenidos como diccionario
@@ -154,7 +156,7 @@ def act_final(message):
 
     df.to_csv(dirname+'/outputreports/'+estudiante+'/'+filename, index=False, sep=',', encoding='utf-8')
 
-    insert_report(filename, now, 'En atención', idEstudiante)
+    insert_report(filename, now_bot , 'En atención', idEstudiante)
 
     respuestas.clear()
 

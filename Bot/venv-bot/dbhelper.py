@@ -42,10 +42,14 @@ def insert_report(fileName, fecha_emitido, estado, id_usuario_id):
         print('Conectando a la base de datos PostgreSQL...\n')
         conexion = psycopg2.connect(**params)
 
+        conexion.autocommit = True
+
         cur = conexion.cursor()
 
-        query = 'INSERT INTO apirest_reporte (filename, fecha_emitido, estado, id_usuario_id) values(%s, %s, %s);'
+        query = 'INSERT INTO apirest_reporte (filename, fecha_emitido, estado, id_usuario_id) values(%s, %s, %s, %s);'
         data = (fileName, fecha_emitido, estado, id_usuario_id)
+
+        print(data)
 
         cur.execute(query, data)
 
@@ -54,5 +58,6 @@ def insert_report(fileName, fecha_emitido, estado, id_usuario_id):
         print(error)
     finally:
         if conexion is not None:
+            conexion.commit()
             conexion.close()
             print('Conexion finalizada')

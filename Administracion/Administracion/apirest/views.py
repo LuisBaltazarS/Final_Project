@@ -1,10 +1,10 @@
-from .models import Usuario, Admin
+from .models import Usuario, Admin, Reporte
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from .serializers import UserSerializer, AdminSerializer
+from .serializers import UserSerializer, AdminSerializer, ReporteSerializer
 
 # Create your views here.
 
@@ -67,3 +67,25 @@ def admin_list(request):
 
         return JSONResponse(serializer.errors, status=400)
 
+@csrf_exempt
+def reporte_list(request):
+    """
+    List all reports
+    """
+    if request.method == 'GET':
+
+        reportes = Reporte.objects.all()
+        serializer = ReporteSerializer(reportes, many=True)
+        return JSONResponse(serializer.data)
+
+    elif request.method == 'POST':
+
+        data = JSONParser().parse(request)
+        serializer = ReporteSerializer(data=data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+            return JSONResponse(serializer.data, status=201)
+        
+        return JSONResponse(serializer.errors, status=400)
